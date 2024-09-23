@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Shipping\Model\Config">
+        <plugin name="infinite_shipping_method_extra_config" type="Sumtsov\MultiFlatShipping\Plugin\Shipping\Model\Config" />
+    </type>
+    <type name="Magento\Shipping\Model\CarrierFactory">
+        <plugin name="infinite_shipping_method_carrier_factory" type="Sumtsov\MultiFlatShipping\Plugin\Shipping\Model\CarrierFactory" />
+    </type>
+    <type name="Sumtsov\MultiFlatShipping\Model\FlatShippingConfigListProvider">
+        <arguments>
+            <argument name="configTemplate" xsi:type="array">
+                <item name="translate" xsi:type="string">label</item>
+                <item name="type" xsi:type="string">text</item>
+                <item name="sortOrder" xsi:type="number">310</item>
+                <item name="showInDefault" xsi:type="number">1</item>
+                <item name="showInWebsite" xsi:type="number">1</item>
+                <item name="showInStore" xsi:type="number">0</item>
+                <item name="label" xsi:type="string">Flat Rate (Extra)</item>
+                <item name="children" xsi:type="array">
+                    <item name="active" xsi:type="array">
+                        <item name="id" xsi:type="string">active</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">select</item>
+                        <item name="sortOrder" xsi:type="number">1</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="canRestore" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Enabled</item>
+                        <item name="source_model" xsi:type="string">Magento\Config\Model\Config\Source\Yesno</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="title" xsi:type="array">
+                        <item name="id" xsi:type="string">title</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">text</item>
+                        <item name="sortOrder" xsi:type="number">2</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="showInStore" xsi:type="boolean">true</item>
+                        <item name="canRestore" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Title</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="name" xsi:type="array">
+                        <item name="id" xsi:type="string">name</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">text</item>
+                        <item name="sortOrder" xsi:type="number">3</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="showInStore" xsi:type="boolean">true</item>
+                        <item name="canRestore" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Method Name</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="type" xsi:type="array">
+                        <item name="id" xsi:type="string">type</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">select</item>
+                        <item name="sortOrder" xsi:type="number">4</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="canRestore" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Type</item>
+                        <item name="source_model" xsi:type="string">Magento\OfflineShipping\Model\Config\Source\Flatrate</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="price" xsi:type="array">
+                        <item name="id" xsi:type="string">price</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">text</item>
+                        <item name="sortOrder" xsi:type="number">5</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="canRestore" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Price</item>
+                        <item name="validate" xsi:type="string">validate-number validate-zero-or-greater</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="handling_type" xsi:type="array">
+                        <item name="id" xsi:type="string">handling_type</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">select</item>
+                        <item name="sortOrder" xsi:type="number">7</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="canRestore" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Calculate Handling Fee</item>
+                        <item name="source_model" xsi:type="string">Magento\Shipping\Model\Source\HandlingType</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="handling_fee" xsi:type="array">
+                        <item name="id" xsi:type="string">handling_fee</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">text</item>
+                        <item name="sortOrder" xsi:type="number">8</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Handling Fee</item>
+                        <item name="validate" xsi:type="string">validate-number validate-zero-or-greater</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="specificerrmsg" xsi:type="array">
+                        <item name="id" xsi:type="string">specificerrmsg</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">textarea</item>
+                        <item name="sortOrder" xsi:type="number">80</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="showInStore" xsi:type="boolean">true</item>
+                        <item name="canRestore" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Displayed Error Message</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="sallowspecific" xsi:type="array">
+                        <item name="id" xsi:type="string">sallowspecific</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">select</item>
+                        <item name="sortOrder" xsi:type="number">90</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="canRestore" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Ship to Applicable Countries</item>
+                        <item name="frontend_class" xsi:type="string">shipping-applicable-country</item>
+                        <item name="source_model" xsi:type="string">Magento\Shipping\Model\Config\Source\Allspecificcountries</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="specificcountry" xsi:type="array">
+                        <item name="id" xsi:type="string">specificcountry</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">multiselect</item>
+                        <item name="sortOrder" xsi:type="number">91</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Ship to Specific Countries</item>
+                        <item name="source_model" xsi:type="string">Magento\Directory\Model\Config\Source\Country</item>
+                        <item name="can_be_empty" xsi:type="boolean">true</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="showmethod" xsi:type="array">
+                        <item name="id" xsi:type="string">showmethod</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">select</item>
+                        <item name="sortOrder" xsi:type="number">92</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Show Method if Not Applicable</item>
+                        <item name="source_model" xsi:type="string">Magento\Config\Model\Config\Source\Yesno</item>
+                        <item name="frontend_class" xsi:type="string">shipping-skip-hide</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                    <item name="sort_order" xsi:type="array">
+                        <item name="id" xsi:type="string">sort_order</item>
+                        <item name="translate" xsi:type="string">label</item>
+                        <item name="type" xsi:type="string">text</item>
+                        <item name="sortOrder" xsi:type="number">100</item>
+                        <item name="showInDefault" xsi:type="boolean">true</item>
+                        <item name="showInWebsite" xsi:type="boolean">true</item>
+                        <item name="label" xsi:type="string">Sort Order</item>
+                        <item name="validate" xsi:type="string">validate-number validate-zero-or-greater</item>
+                        <item name="_elementType" xsi:type="string">field</item>
+                    </item>
+                </item>
+                <item name="_elementType" xsi:type="string">group</item>
+                <item name="path" xsi:type="string">carriers</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
